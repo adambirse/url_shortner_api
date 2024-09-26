@@ -1,3 +1,4 @@
+using example;
 namespace test;
 
 public class UnitTest1
@@ -6,6 +7,6 @@ public class UnitTest1
     public void Test1()
     {
         Console.WriteLine("I AM A TEST");
-        Assert.True(false);
+        Assert.Equal(Example.foo(), "Hello World");
     }
 }
