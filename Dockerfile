@@ -4,7 +4,6 @@ WORKDIR /source
 
 # copy csproj and restore as distinct layers
 COPY *.sln .
-# TODO docker ignore for bin directories etc
 COPY src/*.csproj ./src/
 # shouldnt need this
 COPY test/*.csproj ./test/
