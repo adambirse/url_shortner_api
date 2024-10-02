@@ -14,11 +14,10 @@ RUN dotnet restore
 # # copy everything else and build app
 COPY src/. ./src/
 WORKDIR /source/src
-RUN dotnet publish -c release -o /app
+RUN dotnet publish -c release
 
 # # final stage/image
-# FROM mcr.microsoft.com/dotnet/aspnet:8.0
-# WORKDIR /app
-# COPY --from=build /app ./
-# ENTRYPOINT ["dotnet", "src.dll"]
-ENTRYPOINT [ "dotnet", "/source/src/bin/release/net8.0/src.dll" ]
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+COPY --from=build /source/src/bin/release/net8.0/ ./
+ENTRYPOINT ["dotnet", "src.dll"]
