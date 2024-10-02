@@ -24,4 +24,8 @@ A test project for capturing my learnings around c#, azure etc.
 - `az group delete --name my-first-api-group --yes --no-wait`
 
 
+## Docker 
 
+`docker build -t api .`
+
+`docker run -it --rm -p 9999:8080 --name api_example api`
