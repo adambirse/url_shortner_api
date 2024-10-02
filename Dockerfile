@@ -8,7 +8,6 @@ COPY src/*.csproj ./src/
 # shouldnt need this
 COPY test/*.csproj ./test/
 
-# RUN echo "Checking /source/src after copying csproj:" && ls -al ./src
 RUN dotnet restore
 
 # # copy everything else and build app
