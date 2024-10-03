@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace MyApp.Namespace
+namespace weather.controllers
 {
 
     [Route("api/weatherforecast")]
