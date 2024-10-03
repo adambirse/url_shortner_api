@@ -1,14 +1,8 @@
 namespace weather.model
 {
-    public class WeatherForecast
+    public class WeatherForecast(DateTime date)
     {
 
-        public DateTime date { get; private set; }
-
-        public WeatherForecast(DateTime date)
-        {
-            this.date = date;
-        }
-
+        public DateTime Date { get; private set; } = date;
     }
 }

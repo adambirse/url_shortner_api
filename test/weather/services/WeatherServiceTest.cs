@@ -9,8 +9,8 @@ public class WeatherServiceTest
     {
         WeatherService service = new WeatherService();
         DateTime now = DateTime.Now;
-        WeatherForecast forecast = service.getForecast(now);
-        Assert.Equal(now, forecast.date);
+        WeatherForecast forecast = service.GetForecast(now);
+        Assert.Equal(now, forecast.Date);
     }
 }
 
