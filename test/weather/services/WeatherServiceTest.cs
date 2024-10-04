@@ -4,13 +4,21 @@ using weather.model;
 
 public class WeatherServiceTest
 {
-    [Fact(DisplayName ="Should give a forecast for the provided date")]
-    public void GetForecast()
+    [Theory(DisplayName = "GetForecast should return a forecast with the correct date")]
+    [InlineData("2023-01-01")]
+    [InlineData("2023-06-15")]
+    [InlineData("2023-12-31")]
+    public void GetForecast_ReturnsForecastWithCorrectDate(string dateString)
     {
+        // Arrange
         WeatherService service = new WeatherService();
-        DateTime now = DateTime.Now;
-        WeatherForecast forecast = service.GetForecast(now);
-        Assert.Equal(now, forecast.Date);
+        DateTime date = DateTime.Parse(dateString);
+
+        // Act
+        WeatherForecast forecast = service.GetForecast(date);
+
+        // Assert
+        Assert.Equal(date, forecast.Date);
     }
 }
 
