@@ -4,7 +4,7 @@ using weather.model;
 
 public class WeatherServiceTest
 {
-    [Fact]
+    [Fact(DisplayName ="Should give a forecast for the provided date")]
     public void GetForecast()
     {
         WeatherService service = new WeatherService();
