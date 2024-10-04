@@ -10,14 +10,11 @@ public class WeatherServiceTest
     [InlineData("2023-12-31")]
     public void GetForecast_ReturnsForecastWithCorrectDate(string dateString)
     {
-        // Arrange
         WeatherService service = new WeatherService();
         DateTime date = DateTime.Parse(dateString);
 
-        // Act
         WeatherForecast forecast = service.GetForecast(date);
 
-        // Assert
         Assert.Equal(date, forecast.Date);
     }
 }
