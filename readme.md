@@ -85,4 +85,13 @@ Requires a postgres docker container running.
 
 `docker run -p 5432:5432 --name some-postgres -e POSTGRES_PASSWORD=mypassword -d postgres`
 
+Access database (dbeaver)
+
+```
+CREATE TABLE "Todos"(
+"Id" int,
+"Title" varchar(255)
+);
+```
+
 Need to look at data migrations.
