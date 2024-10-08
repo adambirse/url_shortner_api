@@ -23,8 +23,7 @@ A test project for capturing my learnings around c#, azure etc.
 - `az webapp delete --name my-first-api --resource-group my-first-api-group`
 - `az group delete --name my-first-api-group --yes --no-wait`
 
-
-## Docker 
+## Docker
 
 `docker build -t api .`
 
@@ -37,7 +36,7 @@ A test project for capturing my learnings around c#, azure etc.
 `az group create --name myResourceGroup --location uksouth`
 
 `az acr create --resource-group myResourceGroup --name <ACR_NAME> --sku Basic`
-(the above command takes a while.  ACR name must be unique)
+(the above command takes a while. ACR name must be unique)
 
 `az acr login --name <ACR_NAME>`
 
@@ -46,14 +45,14 @@ A test project for capturing my learnings around c#, azure etc.
 `docker push <ACR_NAME>.azurecr.io/api:latest`
 (the dockerfile for this is huge and needs to be minimised)
 
-### Create azure container app 
+### Create azure container app
 
 Container apps are in preview???
 
 Enable the feature
 `az extension add --name containerapp`
 
-Creates a container app ENVIRONMENT and not a container app.  thats the next step.
+Creates a container app ENVIRONMENT and not a container app. thats the next step.
 `az containerapp env create --name myContainerAppEnv --resource-group myResourceGroup --location uksouth`
 
 Create the container app
@@ -66,18 +65,24 @@ this fails due to not being authorised. to Resolve? - Doesnt work
 
 `az acr update -n <ACR_NAME> --admin-enabled true`
 
-
 https://learn.microsoft.com/en-gb/azure/container-registry/container-registry-authentication?WT.mc_id=Portal-fx&tabs=azure-cli#admin-account
 
 `az containerapp show --name myapi --resource-group myResourceGroup --query "configuration.ingress.fqdn" --output table`
-
 
 ## Tear down
 
 `az containerapp env delete -n myContainerAppEnv -g MyResourceGroup -y`
 
+## Data access
 
+add package `dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL`
 
+Followed this [Reference example](<[bar](https://medium.com/itthirit-technology/create-rest-api-using-net-core-and-entity-framework-with-postgresql-7a06fe29b81b)>) with a few changes (TODO document commit)
 
+Requires a postgres docker container running.
 
+`docker pull postgres`
 
+`docker run -p 5432:5432 --name some-postgres -e POSTGRES_PASSWORD=mypassword -d postgres`
+
+Need to look at data migrations.
