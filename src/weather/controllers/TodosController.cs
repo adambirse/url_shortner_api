@@ -29,9 +29,9 @@ public class TodosController : ControllerBase
     }
 
     [HttpGet("search")]
-    public ActionResult<Todo> GetTodoByName([FromQuery] string name)
+    public ActionResult<List<Todo>> GetTodoByName([FromQuery] string name)
     {
-        var todo = _dbContext.Todos.Where(todo => todo.Title == name).FirstOrDefault();
+        var todo = _dbContext.Todos.Where(todo => todo.Title == name).ToList();
         Console.WriteLine(todo);
         if (todo == null)
         {
