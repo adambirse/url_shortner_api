@@ -15,7 +15,6 @@ public class AppDbContext : DbContext
         .Build();
 
         var connectionString = configuration.GetConnectionString("DefaultConnection");
-        Console.WriteLine($"Connection string: {connectionString}");
         optionsBuilder.UseNpgsql(connectionString);
     }
 
