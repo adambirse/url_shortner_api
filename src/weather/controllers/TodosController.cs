@@ -28,6 +28,18 @@ public class TodosController : ControllerBase
         return todo;
     }
 
+    [HttpGet("search")]
+    public ActionResult<Todo> GetTodoByName([FromQuery] string name)
+    {
+        var todo = _dbContext.Todos.Where(todo => todo.Title == name).FirstOrDefault();
+        Console.WriteLine(todo);
+        if (todo == null)
+        {
+            return NotFound();
+        }
+        return todo;
+    }
+
     [HttpPost]
     public ActionResult<Todo> CreateTodo([FromBody] Todo todo)
     {
