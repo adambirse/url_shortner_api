@@ -85,13 +85,19 @@ Requires a postgres docker container running.
 
 `docker run -p 5432:5432 --name some-postgres -e POSTGRES_PASSWORD=mypassword -d postgres`
 
-Access database (dbeaver)
 
-```
-CREATE TABLE "Todos"(
-"Id" int,
-"Title" varchar(255)
-);
-```
+### Migrations
 
-Need to look at data migrations.
+## Initial setup and creation
+
+`dotnet add package Microsoft.EntityFrameworkCore.Design`
+
+[Migrations](https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli)
+
+`dotnet tool install dotnet-ef -g`
+
+`dotnet ef migrations add InitialCreate`
+
+create schema (public) in database
+
+`dotnet ef database update`
