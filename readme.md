@@ -77,7 +77,7 @@ https://learn.microsoft.com/en-gb/azure/container-registry/container-registry-au
 
 add package `dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL`
 
-Followed this [Reference example](<[bar](https://medium.com/itthirit-technology/create-rest-api-using-net-core-and-entity-framework-with-postgresql-7a06fe29b81b)>) with a few changes (TODO document commit)
+Followed this [Reference example](<[bar](https://medium.com/itthirit-technology/create-rest-api-using-net-core-and-entity-framework-with-postgresql-7a06fe29b81b)>) with a few changes (364e0739733790b2fcc3723d7191d659073a3789)
 
 Requires a postgres docker container running.
 
