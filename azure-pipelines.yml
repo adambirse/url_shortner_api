@@ -28,13 +28,13 @@ steps:
       projects: "**/*.csproj"
       arguments: "--configuration Release"
 
-  # # Run unit tests
-  # - task: DotNetCoreCLI@2
-  #   displayName: 'Run Unit Tests'
-  #   inputs:
-  #     command: 'test'
-  #     projects: '**/*Tests/*.csproj'
-  #     arguments: '--configuration Release --no-build --verbosity normal'
+  # Run unit tests
+  - task: DotNetCoreCLI@2
+    displayName: "Run Unit Tests"
+    inputs:
+      command: "test"
+      projects: "**/*Tests/*.csproj"
+      arguments: "--configuration Release --no-build --verbosity normal"
 
   # # Optional: Publish test results
   # - task: PublishTestResults@2
