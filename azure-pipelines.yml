@@ -41,5 +41,5 @@ steps:
     displayName: 'Publish Test Results'
     inputs:
       testResultsFormat: 'Xunit'
-      testResultsFiles: '**/TestResults/*.xml'
+      testResultsFiles: '**/TestResults/*.html'
       failTaskOnFailedTests: true
