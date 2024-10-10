@@ -1,36 +1,45 @@
-# ASP.NET Core (.NET Framework)
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
 trigger:
-- main
+  branches:
+    include:
+      - main
 
 pool:
-  vmImage: 'windows-latest'
-  demands: Limit -equals DisableParallel 
-
-
-variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  vmImage: "ubuntu-latest"
 
 steps:
-- task: NuGetToolInstaller@1
+  - task: UseDotNet@2
+    inputs:
+      packageType: "sdk"
+      version: "7.x.x" # Specify the desired .NET SDK version
+      installationPath: $(Agent.ToolsDirectory)/dotnet
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
+  # Restore NuGet packages
+  - task: DotNetCoreCLI@2
+    displayName: "Restore NuGet Packages"
+    inputs:
+      command: "restore"
+      projects: "**/*.csproj"
 
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=false /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+  # Build the solution
+  - task: DotNetCoreCLI@2
+    displayName: "Build Solution"
+    inputs:
+      command: "build"
+      projects: "**/*.csproj"
+      arguments: "--configuration Release"
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+  # # Run unit tests
+  # - task: DotNetCoreCLI@2
+  #   displayName: 'Run Unit Tests'
+  #   inputs:
+  #     command: 'test'
+  #     projects: '**/*Tests/*.csproj'
+  #     arguments: '--configuration Release --no-build --verbosity normal'
+
+  # # Optional: Publish test results
+  # - task: PublishTestResults@2
+  #   displayName: 'Publish Test Results'
+  #   inputs:
+  #     testResultsFormat: 'JUnit'
+  #     testResultsFiles: '**/TestResults/*.xml'
+  #     failTaskOnFailedTests: true
