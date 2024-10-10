@@ -36,10 +36,10 @@ steps:
       projects: "**/test/*.csproj"
       arguments: "--configuration Release --no-build --verbosity normal --logger html"
 
-  # Optional: Publish test results
-  - task: PublishTestResults@2
-    displayName: 'Publish Test Results'
-    inputs:
-      testResultsFormat: 'Xunit'
-      testResultsFiles: '**/TestResults/*.html'
-      failTaskOnFailedTests: true
+  # # Optional: Publish test results
+  # - task: PublishTestResults@2
+  #   displayName: 'Publish Test Results'
+  #   inputs:
+  #     testResultsFormat: 'Xunit'
+  #     testResultsFiles: '**/TestResults/*.html'
+  #     failTaskOnFailedTests: true
