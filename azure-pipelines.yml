@@ -28,7 +28,7 @@ steps:
       projects: "**/*.csproj"
       arguments: "--configuration Release"
 
-  # Run unit tests
+  # Run unit tests also publishes test results
   - task: DotNetCoreCLI@2
     displayName: "Run Unit Tests"
     inputs:
@@ -36,10 +36,3 @@ steps:
       projects: "**/test/*.csproj"
       arguments: "--configuration Release --no-build --verbosity normal --logger html"
 
-  # # Optional: Publish test results
-  # - task: PublishTestResults@2
-  #   displayName: 'Publish Test Results'
-  #   inputs:
-  #     testResultsFormat: 'Xunit'
-  #     testResultsFiles: '**/TestResults/*.html'
-  #     failTaskOnFailedTests: true
