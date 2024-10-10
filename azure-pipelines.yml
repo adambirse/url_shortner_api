@@ -10,7 +10,7 @@ steps:
   - task: UseDotNet@2
     inputs:
       packageType: "sdk"
-      version: "7.x.x" # Specify the desired .NET SDK version
+      version: "8.x"
       installationPath: $(Agent.ToolsDirectory)/dotnet
 
   # Restore NuGet packages
