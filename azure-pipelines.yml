@@ -34,12 +34,12 @@ steps:
     inputs:
       command: "test"
       projects: "**/test/*.csproj"
-      arguments: "--configuration Release --no-build --verbosity normal"
+      arguments: "--configuration Release --no-build --verbosity normal --logger html"
 
-  # # Optional: Publish test results
-  # - task: PublishTestResults@2
-  #   displayName: 'Publish Test Results'
-  #   inputs:
-  #     testResultsFormat: 'JUnit'
-  #     testResultsFiles: '**/TestResults/*.xml'
-  #     failTaskOnFailedTests: true
+  # Optional: Publish test results
+  - task: PublishTestResults@2
+    displayName: 'Publish Test Results'
+    inputs:
+      testResultsFormat: 'Xunit'
+      testResultsFiles: '**/TestResults/*.xml'
+      failTaskOnFailedTests: true
