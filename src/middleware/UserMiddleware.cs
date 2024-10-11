@@ -11,8 +11,7 @@ public class UserMiddleware
     {
         var user = context.User;
         Console.WriteLine("User has role Admin?: " + user.IsInRole("Admin"));
-        if (!user.IsInRole("Admin"))
 
-            await _next(context);
+        await _next(context);
     }
 }
