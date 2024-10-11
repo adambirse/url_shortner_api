@@ -36,6 +36,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapControllers();
+app.UseMiddleware<UserMiddleware>();
 
 app.Run();
 
