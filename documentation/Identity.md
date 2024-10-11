@@ -10,4 +10,8 @@ This commit `604f9ee115c8730804281ef849b3b14d4ecc622e`
 
 ## Securing endpoints
 
-TODO
+See `SecureController` for an example
+
+This commit TODO
+
+Follow the tutorial above. Be sure to set `useCookies = true` in the query string for the login api. This is easy to miss and created some confusion.
