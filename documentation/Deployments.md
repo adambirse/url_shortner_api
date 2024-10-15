@@ -5,13 +5,13 @@
 ### Azure app service
 
 - Create webabb via web
-  - resourcegroup name `my-first-api-group`
+  - resourcegroup name `myResourceGroup`
   - name `my-first-api`
   - region `UK South`
 - az login
-- `az webapp up --name my-first-api --resource-group my-first-api-group --location uksouth`
-- `az webapp delete --name my-first-api --resource-group my-first-api-group`
-- `az group delete --name my-first-api-group --yes --no-wait`
+- `az webapp up --name my-first-api --resource-group myResourceGroup --location uksouth`
+- `az webapp delete --name my-first-api --resource-group myResourceGroup`
+- `az group delete --name myResourceGroup --yes --no-wait`
 
 ## Docker
 
@@ -63,3 +63,26 @@ https://learn.microsoft.com/en-gb/azure/container-registry/container-registry-au
 
 `az containerapp env delete -n myContainerAppEnv -g MyResourceGroup -y`
 
+## Deploy database
+
+# Create Server:
+
+`az postgres server create --name server --resource-group myResourceGroup --location uksouth --admin-user adminuser --admin-password password`
+
+`az postgres db create -g myResourceGroup -s server -n postgres`
+
+# Connect locally
+
+Update connection string in `appsettings.json`
+
+Being sure to specify SSL
+
+`"DefaultConnection": "Host=server.postgres.database.azure.com;Port=5432;Database=postgres;Username=<user@server>;Password=<PASSWORD>;SslMode=Require;"`
+
+Add your local IP to the firewall settings (settings>connection security)
+
+`dotnet ef database update`
+
+`dotnet run`
+
+## Deploy webapp and connect
