@@ -5,9 +5,9 @@ namespace services.weather
 {
     public class WeatherService
     {
-        public WeatherForecast GetForecast(DateTime now)
+        public WeatherForecastModel GetForecast(DateTime now)
         {
-            return new WeatherForecast(now);
+            return new WeatherForecastModel(now);
         }
     }
 }

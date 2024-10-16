@@ -1,6 +1,6 @@
 namespace weather.model
 {
-    public class WeatherForecast(DateTime date)
+    public class WeatherForecastModel(DateTime date)
     {
 
         public DateTime Date { get; private set; } = date;

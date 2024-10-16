@@ -13,7 +13,7 @@ public class WeatherServiceTest
         WeatherService service = new WeatherService();
         DateTime date = DateTime.Parse(dateString);
 
-        WeatherForecast forecast = service.GetForecast(date);
+        WeatherForecastModel forecast = service.GetForecast(date);
 
         Assert.Equal(date, forecast.Date);
     }
