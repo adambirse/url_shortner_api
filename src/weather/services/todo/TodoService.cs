@@ -3,7 +3,7 @@ using System.Text.Json;
 namespace services.todo;
 
 public sealed class TodoService(
-    IHttpClientFactory httpClientFactory) : ITodoService
+    IHttpClientFactory httpClientFactory, ILogger<TodoService> logger) : ITodoService
 {
     public async Task<Todo[]> GetUserTodosAsync()
     {
@@ -17,12 +17,12 @@ public sealed class TodoService(
             Todo[]? todos = await client.GetFromJsonAsync<Todo[]>(
                 $"https://jsonplaceholder.typicode.com/todos",
                 new JsonSerializerOptions(JsonSerializerDefaults.Web));
-
+            logger.LogInformation("Successfully retrieved todos from the network");
             return todos ?? [];
         }
         catch (Exception ex)
         {
-            //
+            logger.LogError(ex, "Failed to retrieve todos from the network");
             throw ex;
         }
     }
