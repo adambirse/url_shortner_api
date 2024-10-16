@@ -15,7 +15,7 @@ namespace MyApp.Namespace
             this.todoService = todoService;
         }
         [HttpGet]
-        public async Task<ActionResult<Todo>> GetNetworkCall()
+        public async Task<ActionResult<Todo[]>> GetNetworkCall()
         {
             try
             {

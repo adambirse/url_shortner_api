@@ -6,4 +6,9 @@ public class Todo
 
     [Required]
     public string Title { get; set; }
+
+    public override string ToString()
+    {
+        return $"Id: {Id}, Title: {Title}";
+    }
 }
