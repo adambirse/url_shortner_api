@@ -3,7 +3,7 @@ using weather.model;
 
 namespace services.weather
 {
-    public class WeatherService
+    public class WeatherService : IWeatherService
     {
         public WeatherForecastModel GetForecast(DateTime now)
         {
