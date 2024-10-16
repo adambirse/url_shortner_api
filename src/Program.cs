@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using services.weather;
+using services.todo;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,11 @@ builder.Services.AddAuthorization();
 builder.Services.AddIdentityApiEndpoints<IdentityUser>()
     .AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddScoped<IWeatherService, WeatherService>();
+
+//HTTP example
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<ITodoService, TodoService>();
+
 
 //Example of how to configure Identity options
 builder.Services.Configure<IdentityOptions>(options =>
