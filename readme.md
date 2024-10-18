@@ -1,6 +1,6 @@
-# Azure and C# learnings
+# Url Shortner API
 
-A test project for capturing my learnings around c#, azure etc.
+An API that provides a url shortning service.  i.e. tinyurl.
 
 `dotnet run`
 
@@ -13,6 +13,3 @@ A test project for capturing my learnings around c#, azure etc.
 ## Run release version
 
 `dotnet run path/to/release.dll`
-
-- [Deployments](documentation/Deployments.md)
-- [Entity Framework](documentation/EntityFramework.md)
