@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using services.weather;
 using services.todo;
+using MassTransit;
+using messaging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,17 @@ builder.Services.AddScoped<IWeatherService, WeatherService>();
 //HTTP example
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<ITodoService, TodoService>();
+
+builder.Services.AddHostedService<Worker>();
+builder.Services.AddMassTransit(x =>
+{
+    x.AddConsumer<MessageConsumer>();
+    x.UsingInMemory((context, cfg) =>
+    {
+        cfg.ConfigureEndpoints(context);
+    });
+});
+builder.Services.AddMassTransitHostedService();
 
 
 //Example of how to configure Identity options
