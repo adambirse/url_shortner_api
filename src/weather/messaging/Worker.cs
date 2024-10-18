@@ -20,7 +20,7 @@ public class Worker : BackgroundService
             await _bus.Publish(new Message2 { Text = $"Message2: The time is {DateTimeOffset.Now}" });
 
 
-            await Task.Delay(1000, stoppingToken);
+            await Task.Delay(5000, stoppingToken);
         }
     }
 }
