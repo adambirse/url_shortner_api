@@ -21,6 +21,7 @@ builder.Services.AddScoped<IWeatherService, WeatherService>();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<ITodoService, TodoService>();
 
+//Messaging example
 builder.Services.AddHostedService<Worker>();
 builder.Services.AddMassTransit(x =>
 {
