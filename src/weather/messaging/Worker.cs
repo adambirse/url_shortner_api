@@ -16,7 +16,9 @@ public class Worker : BackgroundService
         {
             Console.WriteLine("Publishing message");
 
-            await _bus.Publish(new Message { Text = $"The time is {DateTimeOffset.Now}" });
+            await _bus.Publish(new Message { Text = $"Message: The time is {DateTimeOffset.Now}" });
+            await _bus.Publish(new Message2 { Text = $"Message2: The time is {DateTimeOffset.Now}" });
+
 
             await Task.Delay(1000, stoppingToken);
         }

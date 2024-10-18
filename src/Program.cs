@@ -22,10 +22,14 @@ builder.Services.AddHttpClient();
 builder.Services.AddScoped<ITodoService, TodoService>();
 
 //Messaging example
+//Message publisher
 builder.Services.AddHostedService<Worker>();
 builder.Services.AddMassTransit(x =>
 {
+    //message consumers.
     x.AddConsumer<MessageConsumer>();
+    x.AddConsumer<MessageConsumer2>();
+    x.AddConsumer<MessageConsumer3>();
     x.UsingInMemory((context, cfg) =>
     {
         cfg.ConfigureEndpoints(context);
