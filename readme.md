@@ -1,6 +1,6 @@
-# Azure and C# learnings
+# Url Shortner
 
-A test project for capturing my learnings around c#, azure etc.
+A url shortning api. i.e. tinyurl
 
 `dotnet run`
 
