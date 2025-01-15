@@ -1,15 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
 using MyApp.Namespace;
-namespace url.services;
+using url.services.hash;
+using url.services;
 
 public class UrlServiceTest
 {
     [Theory]
-    [InlineData("long url", "long url")]
-    [InlineData("test url", "test url")]
+    [InlineData("long url", "short url")]
+    [InlineData("a big long url", "short url")]
     public void TestGetUrl(string longUrl, string shortUrl)
     {
-        UrlService service = new UrlService();
+        UrlService service = new UrlService(new SimpleHashService());
         Assert.Equal(shortUrl, service.getUrl(longUrl));
     }
 }
