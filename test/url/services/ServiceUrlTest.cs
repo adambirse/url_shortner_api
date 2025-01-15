@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using MyApp.Namespace;
 using url.services.hash;
 using url.services;
 
