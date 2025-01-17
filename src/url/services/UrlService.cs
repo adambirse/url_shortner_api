@@ -1,19 +1,13 @@
-using url.services.hash;
+using src.url.services.hash;
 
-namespace url.services
+namespace src.url.services;
+
+public class UrlService(IHashService hashService)
 {
-    public class UrlService
+    private readonly IHashService _hashService = hashService;
+
+    public string getUrl(string url)
     {
-        private readonly IHashService _hashService;
-
-        public UrlService(IHashService hashService)
-        {
-            _hashService = hashService;
-        }
-
-        public string getUrl(string url)
-        {
-            return _hashService.hash(url);
-        }
+        return _hashService.Hash(url);
     }
 }

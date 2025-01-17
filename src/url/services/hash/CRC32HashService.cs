@@ -1,11 +1,11 @@
 using System.IO.Hashing;
 using System.Text;
 
-namespace url.services.hash
+namespace src.url.services.hash
 {
     public class CRC32HashService : IHashService
     {
-        public string hash(string url)
+        public string Hash(string url)
         {
             var crc32 = new Crc32();
             crc32.Append(Encoding.UTF8.GetBytes(url));

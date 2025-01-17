@@ -1,5 +1,5 @@
-namespace url.services.hash;
+namespace src.url.services.hash;
 public interface IHashService
 {
-    public string hash(string url);
+    public string Hash(string url);
 }

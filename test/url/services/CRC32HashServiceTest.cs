@@ -1,16 +1,19 @@
-using url.services.hash;
+using src.url.services.hash;
 
-public class CRC32HashServiceTest
+namespace test.url.services
 {
-    [Theory]
-    [InlineData("long url", "64a0712d")]
-    [InlineData("https://www.google.com", "6b5b1e33")]
-    [InlineData("https://www.youtube.com/video", "64cf59fb")]
-    public void TestHash(string longUrl, string shortUrl)
+    public class CRC32HashServiceTest
     {
-        CRC32HashService service = new CRC32HashService();
-        string actualShortUrl = service.hash(longUrl);
-        Assert.Equal(shortUrl, service.hash(longUrl));
-        Assert.Equal(actualShortUrl.Length, 8);
+        [Theory]
+        [InlineData("long url", "64a0712d")]
+        [InlineData("https://www.google.com", "6b5b1e33")]
+        [InlineData("https://www.youtube.com/video", "64cf59fb")]
+        public void TestHash(string longUrl, string shortUrl)
+        {
+            CRC32HashService service = new CRC32HashService();
+            string actualShortUrl = service.Hash(longUrl);
+            Assert.Equal(shortUrl, service.Hash(longUrl));
+            Assert.Equal(actualShortUrl.Length, 8);
+        }
     }
 }
